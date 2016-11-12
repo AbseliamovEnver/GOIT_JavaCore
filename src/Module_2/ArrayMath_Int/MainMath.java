@@ -4,16 +4,15 @@ public class MainMath {
 
     public static void main(String[] args) {
 
-        CreateArrayInt.scanNumberOfElements();
         int array[] = CreateArrayInt.createArrayInt().clone();
         int arrayClone[] = array.clone();
 
         MathMethods.sum(array);
         MathMethods.min(array);
         MathMethods.max(array);
-        MathMethods.maxPositive(array);
+        MathMethods.maxPositive(arrayClone);
         MathMethods.multiplication(array);
-        MathMethods.modulus(arrayClone);
-        MathMethods.secondLargest(array);
+        MathMethods.modulus(array);
+        MathMethods.secondLargest(arrayClone);
     }
 }

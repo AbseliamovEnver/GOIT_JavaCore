@@ -3,10 +3,9 @@ package Module_2.CashWithdrawal;
 public class MainCash {
 
     public static void main(String[] args) {
-
-        System.out.printf("Доступно средств на счету: " + "%8.2f", Calculate.balance);
+        double balance = Math.random() * 1000.0;
+        System.out.printf("Баланс на счету: " + "%2.2f", balance);
         System.out.println();
-        Calculate.scanHowMatchCashToRemove();
-        Calculate.howMatchCashHave();
+        Calculate.howMatchCashHave(balance);
     }
 }

@@ -3,15 +3,10 @@ package Module_2.ArrayMath_Double;
 import java.util.Scanner;
 
 public class CreateArrayDouble {
-    static int arraySize = 0;
-
-    public static void scanNumberOfElements() {
+    public static double[] createArrayDouble() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите количество элементов массива: ");
-        arraySize = scanner.nextInt();
-    }
-
-    public static double[] createArrayDouble() {
+        int arraySize = scanner.nextInt();
         double[] arrayDouble = new double[arraySize];
         System.out.print("Начальный массив: ");
         for (int i = 0; i < arrayDouble.length; i++) {

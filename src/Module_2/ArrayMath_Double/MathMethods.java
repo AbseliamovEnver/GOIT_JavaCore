@@ -1,8 +1,10 @@
 package Module_2.ArrayMath_Double;
 
+import java.util.Arrays;
+
 public class MathMethods {
 
-    public static void sum(double array[]) {
+    public static void sum(double[] array) {
         double sumElemetn = 0;
         for (double elementArray : array) {
             sumElemetn += elementArray;
@@ -11,30 +13,21 @@ public class MathMethods {
         System.out.println();
     }
 
-    public static void min(double array[]) {
+    public static void min(double[] array) {
         double minElement = array[0];
-        for (int i = 0; i < array.length - 1; i++) {
-            if (Math.abs(minElement) > Math.abs(array[i + 1])) {
+        for (int i = 0; i < array.length; i++) {
+            if (minElement > array[i + 1]) {
                 minElement = array[i + 1];
             }
         }
         System.out.format("Минимальный элемент массива равен: " + "%8.3f", minElement);
         System.out.println();
-        /*
-        for (int i = 0; i < array.length - 1; i++) {
-            if (minElement > array[i + 1]) {
-                minElement = array[i + 1];
-            }
-        }
-        System.out.format("Абсолютный минимальный элемент массива равен: " + "%8.3f", minElement);
-        System.out.println();
-        */
     }
 
-    public static void max(double array[]) {
+    public static void max(double[] array) {
         double maxElement = array[0];
-        for (int i = 0; i < array.length - 1; i++) {
-            if (Math.abs(maxElement) < Math.abs(array[i + 1])) {
+        for (int i = 0; i < array.length; i++) {
+            if (maxElement < array[i + 1]) {
                 maxElement = array[i + 1];
             }
         }
@@ -42,13 +35,10 @@ public class MathMethods {
         System.out.println();
     }
 
-    public static double[] maxPositive(double array[]) {
+    public static double[] maxPositive(double[] array) {
+        Arrays.sort(array);
+        double maxPositive = array[array.length - 1];
 
-        double maxPositive = 0;
-        SortArray.sortArray(array);
-        for (int i = 0; i < array.length; i++) {
-            maxPositive = array[i];
-        }
         if (maxPositive > 0) {
             System.out.format("Максимальный положительный элемент массива: " + "%8.3f", maxPositive);
         } else {
@@ -58,7 +48,7 @@ public class MathMethods {
         return array;
     }
 
-    public static void multiplication(double array[]) {
+    public static void multiplication(double[] array) {
         double mult = 1;
         for (double elementArray : array) {
             mult *= elementArray;
@@ -67,7 +57,7 @@ public class MathMethods {
         System.out.println();
     }
 
-    public static void modulus(double array[]) {
+    public static void modulus(double[] array) {
         if (array[array.length - 1] != 0) {
             double modul = array[0] % array[array.length - 1];
             System.out.format("Остаток от деления первого элемента массива на последний: " + "%8.3f", Math.abs(modul));
@@ -77,10 +67,9 @@ public class MathMethods {
         }
     }
 
-    public static void secondLargest(double array[]) {
-        double secondLarge = 0;
-        SortArray.sortArray(array);
-        secondLarge = array[array.length - 2];
+    public static void secondLargest(double[] array) {
+        Arrays.sort(array);
+        double secondLarge = array[array.length - 2];
         System.out.format("Второй по величине значения элемент массива: " + "%8.3f", secondLarge);
     }
 }
