@@ -15,7 +15,7 @@ public class MathMethods {
 
     public static void min(double[] array) {
         double minElement = array[0];
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             if (minElement > array[i + 1]) {
                 minElement = array[i + 1];
             }
@@ -26,7 +26,7 @@ public class MathMethods {
 
     public static void max(double[] array) {
         double maxElement = array[0];
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             if (maxElement < array[i + 1]) {
                 maxElement = array[i + 1];
             }
@@ -36,9 +36,9 @@ public class MathMethods {
     }
 
     public static double[] maxPositive(double[] array) {
-        Arrays.sort(array);
-        double maxPositive = array[array.length - 1];
-
+        double[] arrayCopy = Arrays.copyOf(array, array.length);
+        Arrays.sort(arrayCopy);
+        double maxPositive = arrayCopy[arrayCopy.length - 1];
         if (maxPositive > 0) {
             System.out.format("Максимальный положительный элемент массива: " + "%8.3f", maxPositive);
         } else {
@@ -68,8 +68,9 @@ public class MathMethods {
     }
 
     public static void secondLargest(double[] array) {
-        Arrays.sort(array);
-        double secondLarge = array[array.length - 2];
+        double[] arrayCopy = Arrays.copyOf(array, array.length);
+        Arrays.sort(arrayCopy);
+        double secondLarge = arrayCopy[arrayCopy.length - 2];
         System.out.format("Второй по величине значения элемент массива: " + "%8.3f", secondLarge);
     }
 }
