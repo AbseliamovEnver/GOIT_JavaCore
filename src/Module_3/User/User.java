@@ -1,6 +1,7 @@
 package Module_3.User;
 
 public class User {
+
     private String name;
     private int balance;
     private int monthsOfEmployment;
@@ -9,7 +10,6 @@ public class User {
     private String currency;
 
     public User(String name, int balance, int monthsOfEmployment, String companyName, int salary, String currency) {
-
         this.name = name;
         this.balance = balance;
         this.monthsOfEmployment = monthsOfEmployment;
@@ -19,17 +19,21 @@ public class User {
     }
 
     public void paySalary() {
-        setBalance(getBalance() + getSalary());
-        System.out.println("Account balance: " + getBalance() + getCurrency());
+        balance += salary;
+        System.out.println("Account balance: " + balance + currency);
     }
 
     public void withdraw(int sum) {
-        if (sum < 1000 && (sum * 1.05) < getBalance()) {
-            setBalance(getBalance() - (sum + (sum * 5) / 100));
-            System.out.println("The balance of the account after withdrawal: " + getBalance() + getCurrency());
-        } else if (sum >= 1000 && (sum * 1.1) < getBalance()) {
-            setBalance(getBalance() - (sum + (sum * 10) / 100));
-            System.out.println("The balance of the account after withdrawal: " + getBalance() + getCurrency());
+        int commission = 0;
+        if (sum < 1000) {
+            commission = (sum * 5 / 100);
+        } else if (sum >= 1000) {
+            commission = (sum * 10 / 100);
+        }
+        System.out.println(balance + " " + sum + " " + commission);
+        if (sum + commission <= balance) {
+            balance -= (sum + commission);
+            System.out.println("The balance of the account after withdrawal: " + balance + currency);
         } else {
             System.out.println("Insufficient funds in the account");
         }
@@ -41,7 +45,7 @@ public class User {
     }
 
     public void monthIncreaser(int addMonth) {
-        setMonthsOfEmployment(getMonthsOfEmployment() + addMonth);
+        addMonth += monthsOfEmployment;
         System.out.println("Months of increase of " + addMonth);
     }
 

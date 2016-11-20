@@ -7,6 +7,6 @@ public class Main {
         user.paySalary();
         user.withdraw(1000);
         user.companyNameLenght();
-        user.monthIncreaser(5);
+        user.monthIncreaser(10);
     }
 }
