@@ -8,7 +8,7 @@ public class BankSystemImpl implements BankSystem {
         amount += user.getBank().getCommission(amount);
         if (user.getBalance() < amount || amount > limitOfWithdrawal) {
             System.out.println("You have exceeded the limit of withdrawal " + limitOfWithdrawal + " when transferring " + amount + " " + currency);
-        } else if (user.getBalance() >= amount) {
+        } else {
             user.setBalance(user.getBalance() - amount);
             System.out.println(user.getName() + " removed from your account " + amount + " " + currency +
                     ", the balance on your account " + user.getBalance() + " " + currency);
@@ -21,7 +21,7 @@ public class BankSystemImpl implements BankSystem {
         Currency currency = user.getBank().getCurrency();
         if (limitOfFunding < amount) {
             System.out.println("You have exceeded the limit of funding " + limitOfFunding + " when transferring " + amount + " " + currency);
-        } else if (limitOfFunding >= amount) {
+        } else {
             user.setBalance(user.getBalance() + amount);
             System.out.println(user.getName() + " your account is funding to " + amount + " " + currency +
                     ", the balance on your account " + user.getBalance() + " " + currency);
@@ -31,7 +31,6 @@ public class BankSystemImpl implements BankSystem {
     @Override
     public void transferMoney(User fromUser, User toUser, int amount) {
         int fromAmount = amount;
-        int toAmount = amount;
         int limitOfWithdrawal = fromUser.getBank().getLimitOfWithdrawal();
         int limitOfFunding = toUser.getBank().getLimitOfFunding();
         Currency fromCurrency = fromUser.getBank().getCurrency();
@@ -40,11 +39,11 @@ public class BankSystemImpl implements BankSystem {
         if (fromCurrency.equals(toCurrency)) {
             if (fromUser.getBalance() < fromAmount || fromAmount > limitOfWithdrawal) {
                 System.out.println("You have exceeded the limit of withdrawal " + limitOfWithdrawal + " when transferring " + amount + " " + fromCurrency);
-            } else if (limitOfFunding < toAmount) {
+            } else if (limitOfFunding < amount) {
                 System.out.println("You have exceeded the limit of funding " + limitOfFunding + " when transferring " + amount + " " + toCurrency);
-            } else if (fromUser.getBalance() >= fromAmount && limitOfFunding >= toAmount) {
+            } else if (fromUser.getBalance() >= fromAmount && limitOfFunding >= amount) {
                 fromUser.setBalance(fromUser.getBalance() - fromAmount);
-                toUser.setBalance(toUser.getBalance() + toAmount);
+                toUser.setBalance(toUser.getBalance() + amount);
                 System.out.println(fromUser.getName() + " transferred from your account " + amount + " " + fromCurrency +
                         ", the balance on your account " + fromUser.getBalance() + " " + fromCurrency);
             }

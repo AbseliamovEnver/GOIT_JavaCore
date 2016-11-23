@@ -1,15 +1,17 @@
 package Module_4;
 
 public abstract class Bank {
-    long id;
-    String bankCountry;
-    Currency currency;
-    int numberOfEmployees;
-    double avrSalaryOfEmployee;
-    long rating;
-    long totalCapital;
 
-    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
+    private long id;
+    private String bankCountry;
+    private Currency currency;
+    private int numberOfEmployees;
+    private double avrSalaryOfEmployee;
+    private long rating;
+    private long totalCapital;
+
+    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees,
+                double avrSalaryOfEmployee, long rating, long totalCapital) {
         this.id = id;
         this.bankCountry = bankCountry;
         this.currency = currency;
@@ -28,11 +30,11 @@ public abstract class Bank {
     abstract int getCommission(int summ);
 
     double moneyPaidMonthlyForSalary() {
-        return avrSalaryOfEmployee * numberOfEmployees;
+        return this.avrSalaryOfEmployee * this.numberOfEmployees;
     }
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -40,7 +42,7 @@ public abstract class Bank {
     }
 
     public String getBankCountry() {
-        return bankCountry;
+        return this.bankCountry;
     }
 
     public void setBankCountry(String bankCountry) {
@@ -48,7 +50,7 @@ public abstract class Bank {
     }
 
     public Currency getCurrency() {
-        return currency;
+        return this.currency;
     }
 
     public void setCurrency(Currency currency) {
@@ -56,7 +58,7 @@ public abstract class Bank {
     }
 
     public int getNumberOfEmployees() {
-        return numberOfEmployees;
+        return this.numberOfEmployees;
     }
 
     public void setNumberOfEmployees(int numberOfEmployees) {
@@ -64,7 +66,7 @@ public abstract class Bank {
     }
 
     public double getAvrSalaryOfEmployee() {
-        return avrSalaryOfEmployee;
+        return this.avrSalaryOfEmployee;
     }
 
     public void setAvrSalaryOfEmployee(double avrSalaryOfEmployee) {
@@ -72,7 +74,7 @@ public abstract class Bank {
     }
 
     public long getRating() {
-        return rating;
+        return this.rating;
     }
 
     public void setRating(long rating) {
@@ -80,7 +82,7 @@ public abstract class Bank {
     }
 
     public long getTotalCapital() {
-        return totalCapital;
+        return this.totalCapital;
     }
 
     public void setTotalCapital(long totalCapital) {

@@ -19,8 +19,9 @@ public class User {
         this.bank = bank;
     }
 
+    @Override
     public String toString() {
-        return bank.getClass().getSimpleName();
+        return super.toString();
     }
 
     public long getId() {
