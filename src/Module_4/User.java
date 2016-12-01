@@ -21,7 +21,7 @@ public class User {
 
     @Override
     public String toString() {
-        return super.toString();
+        return name;
     }
 
     public long getId() {
