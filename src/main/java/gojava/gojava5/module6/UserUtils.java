@@ -4,16 +4,29 @@ import java.util.Arrays;
 
 public class UserUtils {
     public User[] uniqueUsers(User[] users) {
+        int countUniqueUsers = 0;
         User[] uniqueUsers = Arrays.copyOf(users, users.length);
-        for (int i = 0; i < users.length - 1; i++) {
-            for (int j = i + 1; j < users.length; j++) {
+        for (int i = 0; i < uniqueUsers.length - 1; i++) {
+            for (int j = i + 1; j < uniqueUsers.length; j++) {
                 if (uniqueUsers[i].equals(uniqueUsers[j])) {
                     uniqueUsers[i] = null;
                     uniqueUsers[j] = null;
                     i++;
                     j++;
                     break;
+                } else {
+                    countUniqueUsers++;
                 }
+            }
+        }
+        int indexUniqueUsers = 0;
+        User[] resultUniqueUsers = new User[countUniqueUsers];
+        for (int i = 0; i < uniqueUsers.length; i++) {
+            if (uniqueUsers[i] == null) {
+                continue;
+            } else {
+                resultUniqueUsers[indexUniqueUsers] = uniqueUsers[i];
+                indexUniqueUsers++;
             }
         }
         return users;
@@ -28,6 +41,16 @@ public class UserUtils {
             } else if (users[i].getBalance() == balance) {
                 usersBalance[countUser] = users[i];
                 countUser++;
+            }
+        }
+        int indexUserBalance = 0;
+        User[] resultUserBalance = new User[countUser];
+        for (int i = 0; i < usersBalance.length; i++) {
+            if (usersBalance[i] == null) {
+                continue;
+            } else {
+                resultUserBalance[indexUserBalance] = usersBalance[i];
+                indexUserBalance++;
             }
         }
         return usersBalance;
@@ -60,14 +83,14 @@ public class UserUtils {
         int countExistingUser = 0;
         User[] copyOfUsers = Arrays.copyOf(users, users.length);
         for (int i = 0; i < copyOfUsers.length; i++) {
-            if (!(copyOfUsers[i] == null)) {
+            if (copyOfUsers[i] != null) {
                 countExistingUser++;
             }
         }
         int indexExistingUser = 0;
         User[] resultExistingUsers = new User[countExistingUser];
-        for (int i = 0; i < resultExistingUsers.length; i++) {
-            if (!(copyOfUsers[i] == null)) {
+        for (int i = 0; i < copyOfUsers.length; i++) {
+            if (copyOfUsers[i] != null) {
                 resultExistingUsers[indexExistingUser] = copyOfUsers[i];
                 indexExistingUser++;
             }
