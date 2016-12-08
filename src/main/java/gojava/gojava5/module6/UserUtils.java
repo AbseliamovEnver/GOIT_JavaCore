@@ -20,7 +20,7 @@ public class UserUtils {
             }
         }
         int indexUniqueUsers = 0;
-        User[] resultUniqueUsers = new User[countUniqueUsers];
+        User[] resultUniqueUsers = new User[countUniqueUsers + 1];
         for (int i = 0; i < uniqueUsers.length; i++) {
             if (uniqueUsers[i] == null) {
                 continue;
