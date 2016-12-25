@@ -24,23 +24,21 @@ public class DAOImpl implements DAO {
 
     @Override
     public Room update(Room room) {
-        for (Room roomFindId : daoRooms) {
-            if (roomFindId.getId() == room.getId()) {
-                daoRooms.remove(roomFindId);
-                daoRooms.add(room);
-                break;
-            } else if (roomFindId.getId() == 0) {
-                break;
-            }
+        Room found = findById(room.getId());
+        if (found != null) {
+            daoRooms.remove(found);
+            daoRooms.add(room);
+        } else {
+            System.out.println("Room not found");
         }
         return room;
     }
 
     @Override
     public Room findById(long id) {
-        for (Room roomFindId : daoRooms) {
-            if (roomFindId.getId() == id) {
-                return roomFindId;
+        for (Room room : daoRooms) {
+            if (room.getId() == id) {
+                return room;
             }
         }
         return null;

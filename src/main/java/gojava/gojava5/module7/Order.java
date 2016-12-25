@@ -19,7 +19,12 @@ public class Order implements Comparable<Order> {
 
     @Override
     public int compareTo(Order order) {
-        return this.getPrice() - order.getPrice();
+        if (this.getPrice() - order.getPrice() < 0) {
+            return -1;
+        } else if (this.getPrice() - order.getPrice() == 0) {
+            return 0;
+        }
+        return 1;
     }
 
     @Override
