@@ -8,38 +8,28 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
     public List<T> dataBase = new LinkedList<>();
 
     @Override
-    public T save(T object) {
-        dataBase.add(object);
-        return object;
+    public T save(T element) {
+        dataBase.add(element);
+        return element;
     }
 
     @Override
-    public void delete(T object) {
-        dataBase.remove(object);
+    public void delete(T element) {
+        dataBase.remove(element);
     }
 
     @Override
-    public void deleteAll(List<T> object) {
-        dataBase.removeAll(object);
+    public void deleteAll(List<T> list) {
+        dataBase.removeAll(list);
     }
 
     @Override
-    public void saveAll(List<T> object) {
-        dataBase.addAll(object);
+    public void saveAll(List<T> list) {
+        dataBase.addAll(list);
     }
 
     @Override
     public List<T> getList() {
         return dataBase;
-    }
-
-    @Override
-    public void deleteById(long id) {
-
-    }
-
-    @Override
-    public T get(long id) {
-        return null;
     }
 }
