@@ -10,15 +10,15 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (!(object instanceof User)) {
+        if (!(obj instanceof User)) {
             return false;
         }
 
-        User user = (User) object;
+        User user = (User) obj;
 
         if (getId() != user.getId()) {
             return false;
