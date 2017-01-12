@@ -49,7 +49,6 @@ public class MainTreeSet {
         Order orderWithLargestPrice = setOrders.last();
         System.out.println("Order with largest price:\n " + orderWithLargestPrice);
 
-
         setOrders.removeIf(order -> order.getCurrency().equals(Currency.USD));
         System.out.println("Orders without currency USD:\n " + setOrders);
     }
