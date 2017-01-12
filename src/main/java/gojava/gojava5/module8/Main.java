@@ -34,7 +34,7 @@ public class Main {
         users.deleteById(4L);
         System.out.println("After delete By Id user:\n" + users.getList() + "\n");
 
-        System.out.println(users.get(10L));
+        System.out.println(users.get(10L) + "\n");
         System.out.println("The adjusted list users:\n" + users.getList() + "\n");
     }
 }
