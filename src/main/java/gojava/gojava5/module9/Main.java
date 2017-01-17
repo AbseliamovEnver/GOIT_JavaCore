@@ -39,11 +39,12 @@ public class Main {
         System.out.println("Sorted list by Order price in decrease order:\n" + listOrders);
 
         listOrders.sort(Comparator.comparing(Order::getPrice)
-                .thenComparing(Comparator.comparing(order -> order.getUser().getCity())));
+                .thenComparing(order -> order.getUser().getCity()));
         System.out.println("Sorted list by Order price in increase order AND User city:\n" + listOrders);
 
-        listOrders.sort(Comparator.comparing(Order::getItemName).thenComparing(Order::getShopIdentificator)
-                .thenComparing(Comparator.comparing(order -> order.getUser().getCity())));
+        listOrders.sort(Comparator.comparing(Order::getItemName)
+                .thenComparing(Order::getShopIdentificator)
+                .thenComparing(order -> order.getUser().getCity()));
         System.out.println("Sorted list by Order itemName AND ShopIdentificator AND User city:\n" + listOrders);
 
         List<Order> withoutDuplicatesOrders = listOrders.stream().distinct().collect(Collectors.toList());

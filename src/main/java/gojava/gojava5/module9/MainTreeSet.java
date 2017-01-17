@@ -40,11 +40,7 @@ public class MainTreeSet {
         String userLastName = "Petrov";
         boolean foundOrderbyName = setOrders.stream()
                 .anyMatch(order -> order.getUser().getLastName().equals(userLastName));
-        if (foundOrderbyName) {
-            System.out.println("User {" + userLastName + "} is found\n");
-        } else {
-            System.out.println("User {" + userLastName + "} is not found\n");
-        }
+        System.out.println("User {" + userLastName + "} is " + (foundOrderbyName ? "" : " not ") + "found");
 
         Order orderWithLargestPrice = setOrders.last();
         System.out.println("Order with largest price:\n " + orderWithLargestPrice);
