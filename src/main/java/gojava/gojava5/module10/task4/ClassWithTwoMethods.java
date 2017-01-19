@@ -5,7 +5,7 @@ public class ClassWithTwoMethods {
         try {
             methodG();
         } catch (MyExceptionMethodG e) {
-            throw new MyExceptionMethodF("In MyExceptionMethodG " + e);
+            throw new MyExceptionMethodF("In MyExceptionMethodG ", e);
         }
     }
 
