@@ -1,0 +1,4 @@
+filecontentreplacer in <task 2>
+change string in <task 2>
+third <task 2>
+empty <string>
