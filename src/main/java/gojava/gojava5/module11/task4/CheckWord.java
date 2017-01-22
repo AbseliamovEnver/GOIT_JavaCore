@@ -1,6 +1,9 @@
 package gojava.gojava5.module11.task4;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileReader;
 
 import static gojava.gojava5.module11.task1.Replacer.readStringFromFile;
 
@@ -16,11 +19,13 @@ public class CheckWord {
         String source = tryWithResource(file);
         int i = 0;
         int counter = 0;
-        while((i = source.indexOf(word, i)) != -1){
+        while ((i = source.indexOf(word, i)) != -1) {
             counter++;
-            if((i + word.length()) < source.length())
+            if ((i + word.length()) < source.length()) {
                 i += word.length();
-            else break;
+            } else {
+                break;
+            }
         }
         return counter;
     }

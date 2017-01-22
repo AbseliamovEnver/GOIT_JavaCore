@@ -42,13 +42,14 @@ public class Replacer {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (reader != null)
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
                     System.out.println("Error when trying to close the stream");
                     e.printStackTrace();
                 }
+            }
         }
         return result.toString();
     }

@@ -1,6 +1,11 @@
 package gojava.gojava5.module11.task2;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +26,7 @@ public class FileContentReplacer {
         System.out.println("Result string after replacement:\n" + readStringFromFile(file));
     }
 
-    static void replaceInFile(File file, Map<String, String> map){
+    static void replaceInFile(File file, Map<String, String> map) {
 
         BufferedReader reader = null;
         BufferedWriter writer = null;
@@ -42,9 +47,8 @@ public class FileContentReplacer {
         } catch (IOException e) {
             System.out.println("Error while reading from file: " + file);
             e.printStackTrace();
-        }
-        finally {
-            if(reader != null) {
+        } finally {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -54,7 +58,7 @@ public class FileContentReplacer {
             }
         }
 
-        if(readSuccessful) {
+        if (readSuccessful) {
             result = initString.toString();
             for (String key : map.keySet()) {
                 result = result.toLowerCase().replaceAll(key.toLowerCase(), map.get(key).toLowerCase());
@@ -65,13 +69,12 @@ public class FileContentReplacer {
             } catch (IOException e) {
                 System.out.println("Error while writing to file: " + file);
                 e.printStackTrace();
-            }
-            finally {
-                if(writer != null){
-                    try{
+            } finally {
+                if (writer != null) {
+                    try {
                         writer.flush();
                         writer.close();
-                    }catch(IOException e){
+                    } catch (IOException e) {
                         System.out.println("Error while closing output stream!");
                         e.printStackTrace();
                     }

@@ -1,6 +1,11 @@
 package gojava.gojava5.module11.task3;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +26,7 @@ public class FileContentMerger {
         System.out.println("Result string after replacement:\n" + readStringFromFile(file));
     }
 
-    static void replaceAndMergeInFile(File file, Map<String, String> map){
+    static void replaceAndMergeInFile(File file, Map<String, String> map) {
 
         BufferedReader reader = null;
         BufferedWriter writer = null;
@@ -33,8 +38,7 @@ public class FileContentMerger {
             reader = new BufferedReader(new FileReader(file));
             String lineReader = reader.readLine();
             initString = new StringBuilder();
-            while(lineReader != null)
-            {
+            while (lineReader != null) {
                 initString.append(lineReader);
                 initString.append(System.lineSeparator());
                 lineReader = reader.readLine();
@@ -43,9 +47,8 @@ public class FileContentMerger {
         } catch (IOException e) {
             System.out.println("Error while reading from file: " + file);
             e.printStackTrace();
-        }
-        finally {
-            if(reader != null) {
+        } finally {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -55,7 +58,7 @@ public class FileContentMerger {
             }
         }
 
-        if(readSuccessful) {
+        if (readSuccessful) {
             result = initString.toString();
             for (String key : map.keySet()) {
                 result = result.toLowerCase().replaceAll(key.toLowerCase(), map.get(key).toLowerCase());
@@ -67,13 +70,12 @@ public class FileContentMerger {
             } catch (IOException e) {
                 System.out.println("Error while writing to file: " + file);
                 e.printStackTrace();
-            }
-            finally {
-                if(writer != null){
-                    try{
+            } finally {
+                if (writer != null) {
+                    try {
                         writer.flush();
                         writer.close();
-                    }catch(IOException e){
+                    } catch (IOException e) {
                         System.out.println("Error while closing output stream!");
                         e.printStackTrace();
                     }
