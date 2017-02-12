@@ -28,7 +28,7 @@ public class CheckWord {
     static int checkWord(String word) {
         int count = 0;
         for (String countWords : readingFile().split("\\s+")) {
-            if (countWords.equals(word)){
+            if (countWords.equals(word)) {
                 count++;
             }
         }
