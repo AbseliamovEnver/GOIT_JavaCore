@@ -1,86 +1,66 @@
 package gojava.gojava5.module11.task3;
 
-import java.io.File;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static gojava.gojava5.module11.task1.Replacer.readStringFromFile;
+import static gojava.gojava5.module11.task2.FileContentReplacer.outputData;
 
 public class FileContentMerger {
-    public static void main(String[] args) {
-        File file = new File("src/main/java/gojava/gojava5/module11/task3/textFile.txt");
-        System.out.println("Read from file:\n" + readStringFromFile(file));
+    static final String fileName = "src/main/java/gojava/gojava5/module11/task3/textFile.txt";
+    static File file = new File(fileName);
+
+    public static void main(String[] args) throws IOException {
 
         Map<String, String> map = new HashMap<>();
         map.put("first", "replaceAndMergeInFile in");
         map.put("second", "change string in");
         map.put("line", "<task 3>");
 
-        replaceAndMergeInFile(file, map);
+        outputData("Read from file: ", fileName);
 
-        System.out.println("Result string after replacement:\n" + readStringFromFile(file));
+        fileContentsReplacer(map);
+
+        outputData("\nResulting string after replace and merge to file: ", fileName);
     }
 
-    static void replaceAndMergeInFile(File file, Map<String, String> map) {
+    public static File fileContentsReplacer(Map<String, String> wordsReplace) throws IOException {
+        String correctText = replaceWords(wordsReplace);
+        return rewriteFile(correctText, true);
+    }
 
-        BufferedReader reader = null;
-        BufferedWriter writer = null;
-        StringBuilder initString = null;
-        String result;
-        boolean readSuccessful = false;
-
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String lineReader = reader.readLine();
-            initString = new StringBuilder();
-            while (lineReader != null) {
-                initString.append(lineReader);
-                initString.append(System.lineSeparator());
-                lineReader = reader.readLine();
-            }
-            readSuccessful = true;
+    public static String readFile() {
+        StringBuilder outputString = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            outputString.append(reader.lines().collect(Collectors.joining("\n")));
         } catch (IOException e) {
-            System.out.println("Error while reading from file: " + file);
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    System.out.println("Error while closing input stream!");
-                    e.printStackTrace();
-                }
-            }
+            System.out.println("Error reading from file");
         }
+        return outputString.toString();
+    }
 
-        if (readSuccessful) {
-            result = initString.toString();
-            for (String key : map.keySet()) {
-                result = result.toLowerCase().replaceAll(key.toLowerCase(), map.get(key).toLowerCase());
-            }
-            try {
-                writer = new BufferedWriter(new FileWriter(file, true));
-                writer.write("\n");
-                writer.write(result);
-            } catch (IOException e) {
-                System.out.println("Error while writing to file: " + file);
-                e.printStackTrace();
-            } finally {
-                if (writer != null) {
-                    try {
-                        writer.flush();
-                        writer.close();
-                    } catch (IOException e) {
-                        System.out.println("Error while closing output stream!");
-                        e.printStackTrace();
-                    }
-                }
-            }
+    public static String replaceWords(Map<String, String> replaceWords) {
+        String resultString = readFile();
+        for (Map.Entry<String, String> entry : replaceWords.entrySet()) {
+            resultString = resultString.replaceAll(entry.getKey(), entry.getValue());
         }
+        return resultString;
+    }
+
+    public static File rewriteFile(String newText, boolean append) {
+        try (BufferedWriter bufferedFileWriter = new BufferedWriter(new FileWriter(file, append))) {
+            bufferedFileWriter.write(newText);
+            bufferedFileWriter.newLine();
+            bufferedFileWriter.flush();
+        } catch (IOException e) {
+            System.out.println("Error writing to file");
+        }
+        return file;
     }
 }

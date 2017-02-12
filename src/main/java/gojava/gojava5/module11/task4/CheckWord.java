@@ -4,33 +4,38 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
-import static gojava.gojava5.module11.task1.Replacer.readStringFromFile;
+import static gojava.gojava5.module11.task2.FileContentReplacer.outputData;
 
 public class CheckWord {
+    static final String fileName = "src/main/java/gojava/gojava5/module11/task4/textFile.txt";
+    static File file = new File(fileName);
+
     public static void main(String[] args) throws IOException {
-        File file = new File("src/main/java/gojava/gojava5/module11/task4/textFile.txt");
-        System.out.println("Read from file:\n" + readStringFromFile(file));
+        outputData("Read from file: ", fileName);
+
         String word = "line";
-        System.out.println("Word is \"" + word + "\" found " + checkWord(file, word));
+        checkWord(word);
+
+        System.out.println("\nWord is \"" + word + "\" found " + checkWord(word));
     }
 
-    static int checkWord(File file, String word) throws IOException {
-        String source = tryWithResource(file);
-        int i = 0;
-        int counter = 0;
-        while ((i = source.indexOf(word, i)) != -1) {
-            counter++;
-            if ((i + word.length()) < source.length()) {
-                i += word.length();
-            } else {
-                break;
+    static int checkWord(String word) {
+        int count = 0;
+        for (String countWords : readingFile().split("\\s+")) {
+            if (countWords.equals(word)){
+                count++;
             }
         }
-        return counter;
+        return count;
     }
 
-    public static String tryWithResource(File file) throws IOException {
+    public static String readingFile() {
         StringBuilder result = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String lineReader = reader.readLine();
@@ -40,6 +45,7 @@ public class CheckWord {
                 lineReader = reader.readLine();
             }
         } catch (IOException e) {
+            System.out.println("Error writing to file");
             e.printStackTrace();
         }
         return result.toString();

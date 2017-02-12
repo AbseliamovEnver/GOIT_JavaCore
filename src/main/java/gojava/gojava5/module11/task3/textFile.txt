@@ -3,3 +3,8 @@ second line
 third line
 EMPTY <STRING>
 
+replaceAndMergeInFile in <task 3>
+change string in <task 3>
+third <task 3>
+EMPTY <STRING>
+
