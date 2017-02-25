@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/djandrewd/offline-5-pizzeria.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/holkwen/ProjectManagementSystem.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Enver\.IntelliJIdea2016.3" />
