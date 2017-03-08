@@ -10,6 +10,14 @@
           <option name="url" value="https://github.com/holkwen/ProjectManagementSystem.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Sheptytskyid/GoJava5_EE.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/holkwen/JavaDeveloper.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Enver\.IntelliJIdea2016.3" />
