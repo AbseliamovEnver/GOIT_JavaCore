@@ -1,0 +1,7 @@
+<application>
+  <component name="FindSettings">
+    <option name="customScope" value="File '[Startup_Platform] - ...\src\main\resources\db\migration\V1__initDB.sql'" />
+    <option name="defaultScopeName" value="File '[Startup_Platform] - ...\src\main\resources\db\migration\V1__initDB.sql'" />
+    <option name="SEARCH_SCOPE" value="File '[Startup_Platform] - ...\src\main\resources\db\migration\V1__initDB.sql'" />
+  </component>
+</application>
