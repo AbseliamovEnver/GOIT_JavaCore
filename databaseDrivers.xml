@@ -71,7 +71,7 @@
       <option name="auto-sync" value="false" />
     </driver>
     <driver id="mysql">
-      <artifact name="PostgreSQL" rolling="false" version="42.1.1" />
+      <artifact name="PostgreSQL" rolling="false" use="true" version="42.1.1" />
       <option name="auto-sync" value="true" />
       <option name="auto-commit" value="true" />
       <option name="send-app-info" value="true" />
